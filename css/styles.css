@@ -498,6 +498,8 @@ main { position: relative; z-index: 3; }
   box-shadow: var(--shadow);
   background: #d9e4dc;
   isolation: isolate;
+  cursor: pointer;
+  transition: box-shadow .28s ease, filter .28s ease;
 }
 .spot-card--trangan { grid-area: trang; }
 .spot-card--hangmua { grid-area: hang; }
@@ -511,6 +513,28 @@ main { position: relative; z-index: 3; }
   transition: transform .7s cubic-bezier(.2,.7,.2,1);
 }
 .spot-card:hover img { transform: scale(1.045); }
+.spot-card__click {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  border-radius: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.spot-card:hover {
+  box-shadow: 0 26px 70px rgba(20, 45, 37, .16);
+  filter: saturate(1.04);
+}
+
+.spot-card__click:focus-visible {
+  outline: 3px solid rgba(255,255,255,.96);
+  outline-offset: -5px;
+}
+
+.spot-card__click:focus-visible + * {
+  pointer-events: none;
+}
 .spot-card__shade {
   position: absolute;
   inset: 0;
@@ -559,6 +583,17 @@ main { position: relative; z-index: 3; }
   margin: 13px 5px 0;
   color: #7a8580;
   font-size: 12px;
+}
+
+@media (hover: none) {
+  .spot-card:hover {
+    box-shadow: var(--shadow);
+    filter: none;
+  }
+
+  .spot-card:hover img {
+    transform: none;
+  }
 }
 
 /* DETAILS */
