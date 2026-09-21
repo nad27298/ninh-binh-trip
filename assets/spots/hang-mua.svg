@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="sky2" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#8dc7ff"/>
+      <stop offset="100%" stop-color="#e8f2ff"/>
+    </linearGradient>
+    <linearGradient id="mountA" x1="0" x2="1">
+      <stop offset="0%" stop-color="#264a3f"/>
+      <stop offset="100%" stop-color="#152f27"/>
+    </linearGradient>
+    <linearGradient id="mountB" x1="0" x2="1">
+      <stop offset="0%" stop-color="#487560"/>
+      <stop offset="100%" stop-color="#244638"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sky2)"/>
+  <circle cx="930" cy="145" r="80" fill="#ffe7a1"/>
+  <path d="M0 900V630C130 600 250 550 365 470s200-190 285-245c77-50 170-92 255-70 105 26 177 142 295 185v290Z" fill="url(#mountB)"/>
+  <path d="M0 900V700C120 670 245 628 342 560c78-55 146-130 230-210 114-108 241-175 381-124 82 29 147 104 247 159v315Z" fill="url(#mountA)"/>
+  <path d="M0 900V775c164-35 336-51 500-35 165 16 330 62 700 0v160Z" fill="#6fa785"/>
+  <path d="M690 502 738 458l12 10-50 46-11-12Zm55-50 47-44 12 10-49 46-10-12Zm55-50 48-45 12 11-51 46-9-12Zm54-51 48-44 12 10-50 46-10-12Zm53-49 48-45 12 10-49 46-11-11Z" fill="#ece9d0"/>
+  <rect x="674" y="500" width="308" height="16" rx="8" fill="#ece9d0"/>
+</svg>

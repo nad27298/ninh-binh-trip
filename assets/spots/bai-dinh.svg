@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="sky4" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffe3b7"/>
+      <stop offset="100%" stop-color="#fff7ea"/>
+    </linearGradient>
+    <linearGradient id="temple" x1="0" x2="1">
+      <stop offset="0%" stop-color="#7a3f27"/>
+      <stop offset="100%" stop-color="#522817"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sky4)"/>
+  <circle cx="180" cy="150" r="74" fill="#fff1ca"/>
+  <rect y="650" width="1200" height="250" fill="#d8c89f"/>
+  <rect x="300" y="430" width="600" height="250" rx="6" fill="#f2e5c6"/>
+  <rect x="520" y="450" width="160" height="230" fill="#ebdbb3"/>
+  <path d="M260 430 600 270l340 160H260Z" fill="url(#temple)"/>
+  <path d="M280 410 600 255l320 155H280Z" fill="#a55834"/>
+  <rect x="350" y="480" width="95" height="145" fill="#fff5df"/>
+  <rect x="470" y="480" width="95" height="145" fill="#fff5df"/>
+  <rect x="635" y="480" width="95" height="145" fill="#fff5df"/>
+  <rect x="755" y="480" width="95" height="145" fill="#fff5df"/>
+  <rect x="560" y="535" width="80" height="145" fill="#7d492c"/>
+  <path d="M220 680h760v40H220Z" fill="#c9b17b"/>
+</svg>
