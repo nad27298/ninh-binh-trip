@@ -1,3 +1,4 @@
+/* Ninh Binh Trip V6 — cache-busted release; preserves V5 local choices */
 (() => {
   const completedStorageKey = "ninh-binh-itinerary-completed-v5";
   const choicesStorageKey = "ninh-binh-itinerary-choices-v5";

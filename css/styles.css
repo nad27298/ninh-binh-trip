@@ -480,39 +480,39 @@ main { position: relative; z-index: 3; }
 .quick-card h3 { margin: 2px 0 7px; font-size: 15px; letter-spacing: -.02em; }
 .quick-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
 
-/* SPOTLIGHT — fixed editorial grid */
+/* SPOTLIGHT — current itinerary */
 .spot-grid {
   display: grid;
-  grid-template-columns: 1.12fr .94fr .94fr;
-  grid-template-rows: 300px 300px;
-  grid-template-areas:
-    "trang hang thung"
-    "trang bich bai";
   gap: 14px;
 }
+
 .spot-card {
   position: relative;
   overflow: hidden;
   border-radius: 27px;
   min-width: 0;
+  min-height: 0;
   box-shadow: var(--shadow);
   background: #d9e4dc;
   isolation: isolate;
   cursor: pointer;
   transition: box-shadow .28s ease, filter .28s ease;
 }
-.spot-card--trangan { grid-area: trang; }
-.spot-card--hangmua { grid-area: hang; }
-.spot-card--thungnham { grid-area: thung; }
-.spot-card--bichdong { grid-area: bich; }
-.spot-card--baidinh { grid-area: bai; }
+
 .spot-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform .7s cubic-bezier(.2,.7,.2,1);
 }
+
 .spot-card:hover img { transform: scale(1.045); }
+
+.spot-card:hover {
+  box-shadow: 0 26px 70px rgba(20, 45, 37, .16);
+  filter: saturate(1.04);
+}
+
 .spot-card__click {
   position: absolute;
   inset: 0;
@@ -522,25 +522,18 @@ main { position: relative; z-index: 3; }
   -webkit-tap-highlight-color: transparent;
 }
 
-.spot-card:hover {
-  box-shadow: 0 26px 70px rgba(20, 45, 37, .16);
-  filter: saturate(1.04);
-}
-
 .spot-card__click:focus-visible {
   outline: 3px solid rgba(255,255,255,.96);
   outline-offset: -5px;
 }
 
-.spot-card__click:focus-visible + * {
-  pointer-events: none;
-}
 .spot-card__shade {
   position: absolute;
   inset: 0;
   z-index: 1;
   background: linear-gradient(180deg, rgba(3,17,13,.02) 28%, rgba(4,20,15,.88) 100%);
 }
+
 .spot-card::after {
   content: "";
   position: absolute;
@@ -550,13 +543,17 @@ main { position: relative; z-index: 3; }
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.10);
   border-radius: inherit;
 }
+
 .spot-card__content {
   position: absolute;
   z-index: 2;
-  left: 0; right: 0; bottom: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   padding: 23px;
   color: white;
 }
+
 .spot-card__content span {
   color: #d4e6dd;
   text-transform: uppercase;
@@ -564,13 +561,14 @@ main { position: relative; z-index: 3; }
   font-size: 10px;
   font-weight: 900;
 }
+
 .spot-card__content h3 {
   margin: 7px 0 6px;
   font-size: 27px;
   line-height: 1;
   letter-spacing: -.04em;
 }
-.spot-card--trangan .spot-card__content h3 { font-size: 36px; }
+
 .spot-card__content p {
   margin: 0;
   max-width: 510px;
@@ -578,11 +576,64 @@ main { position: relative; z-index: 3; }
   line-height: 1.5;
   font-size: 13px;
 }
-.spot-card--trangan .spot-card__content p { font-size: 14px; }
+
 .photo-credit {
   margin: 13px 5px 0;
   color: #7a8580;
   font-size: 12px;
+}
+
+.spot-grid--v5 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(3, 260px);
+}
+
+.spot-grid--v5 .spot-card--trangan {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+
+.spot-grid--v5 .spot-card--hangmua {
+  grid-column: 3 / 5;
+  grid-row: 1;
+}
+
+.spot-grid--v5 .spot-card--benan {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.spot-grid--v5 .spot-card--amtien {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+.spot-grid--v5 .spot-card--baisoi {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.spot-grid--v5 .spot-card--kylan {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.spot-grid--v5 .spot-card--phoco {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.spot-grid--v5 .spot-card--thungui {
+  grid-column: 4;
+  grid-row: 3;
+}
+
+.spot-grid--v5 .spot-card--trangan .spot-card__content h3 {
+  font-size: 38px;
+}
+
+.spot-grid--v5 .spot-card--hangmua .spot-card__content h3 {
+  font-size: 32px;
 }
 
 @media (hover: none) {
@@ -757,7 +808,7 @@ main { position: relative; z-index: 3; }
   align-items: center;
   gap: 15px;
 }
-.map-link, .text-link {
+.map-link {
   flex: 0 0 auto;
   color: var(--green-2);
   font-size: 12px;
@@ -769,18 +820,7 @@ main { position: relative; z-index: 3; }
   border-radius: 10px;
   background: rgba(220,234,226,.9);
 }
-.map-link:hover, .text-link:hover { text-decoration: underline; }
-.optional-badge {
-  flex: 0 0 auto;
-  padding: 6px 9px;
-  border-radius: 999px;
-  background: var(--sand-2);
-  color: #8b632a;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  font-size: 10px;
-  font-weight: 900;
-}
+.map-link:hover { text-decoration: underline; }
 .chips {
   display: flex;
   gap: 7px;
@@ -796,23 +836,6 @@ main { position: relative; z-index: 3; }
   font-size: 11px;
   font-weight: 800;
 }
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 8px;
-  margin-top: 14px;
-}
-.menu-item {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 10px 11px;
-  border-radius: 11px;
-  background: rgba(255,255,255,.68);
-  font-size: 12px;
-}
-.menu-item strong { color: #855b20; }
-.fine-print { font-size: 11px !important; }
 
 /* NOTES + CLOSING */
 .tips-grid {
@@ -940,14 +963,6 @@ main { position: relative; z-index: 3; }
   .day-overview { grid-template-columns: 1fr 1fr; }
   .overview-card--day2 { grid-row: span 2; }
   .quick-grid { grid-template-columns: 1fr 1fr; }
-  .spot-grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 420px 280px 280px;
-    grid-template-areas:
-      "trang trang"
-      "hang thung"
-      "bich bai";
-  }
   .tips-grid { grid-template-columns: 1fr 1fr; }
 }
 
@@ -974,18 +989,6 @@ main { position: relative; z-index: 3; }
   .overview-card { min-height: 0; }
   .overview-card--day2 { grid-row: auto; }
 
-  .spot-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(5, 300px);
-    grid-template-areas:
-      "trang"
-      "hang"
-      "thung"
-      "bich"
-      "bai";
-  }
-  .spot-card--trangan .spot-card__content h3 { font-size: 30px; }
-
   .details .section-heading { align-items: stretch; }
   .day-tabs { width: 100%; justify-self: stretch; }
   .day-tab { flex: 1; padding-inline: 8px; }
@@ -1011,7 +1014,6 @@ main { position: relative; z-index: 3; }
     margin: 4px 0 0;
     padding: 14px;
   }
-  .menu-grid { grid-template-columns: 1fr; }
 
   .closing-card { grid-template-columns: 1fr; gap: 26px; padding: 25px 21px; border-radius: 23px; }
   .footer { flex-direction: column; }
@@ -1029,7 +1031,7 @@ main { position: relative; z-index: 3; }
 }
 
 /* =========================================================
-   ITINERARY V5 — 10–12/10/2026
+   ITINERARY V6 CLEAN — 10–12/10/2026
    ========================================================= */
 
 .choices-section { padding-bottom: 100px; }
@@ -1309,86 +1311,9 @@ main { position: relative; z-index: 3; }
 
 .route-line--long { gap: 5px; }
 
-/* Override the previous 5-card Spotlight layout */
-.spot-grid.spot-grid--v5 {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-template-rows: repeat(3, 260px);
-  grid-template-areas: none;
-  gap: 14px;
-}
-
-.spot-grid--v5 .spot-card {
-  grid-area: auto;
-  min-height: 0;
-}
-
-.spot-grid--v5 .spot-card--trangan {
-  grid-column: 1 / 3;
-  grid-row: 1 / 3;
-}
-
-.spot-grid--v5 .spot-card--hangmua {
-  grid-column: 3 / 5;
-  grid-row: 1;
-}
-
-.spot-grid--v5 .spot-card--benan {
-  grid-column: 3;
-  grid-row: 2;
-}
-
-.spot-grid--v5 .spot-card--amtien {
-  grid-column: 4;
-  grid-row: 2;
-}
-
-.spot-grid--v5 .spot-card--baisoi {
-  grid-column: 1;
-  grid-row: 3;
-}
-
-.spot-grid--v5 .spot-card--kylan {
-  grid-column: 2;
-  grid-row: 3;
-}
-
-.spot-grid--v5 .spot-card--phoco {
-  grid-column: 3;
-  grid-row: 3;
-}
-
-.spot-grid--v5 .spot-card--thungui {
-  grid-column: 4;
-  grid-row: 3;
-}
-
-.spot-grid--v5 .spot-card--trangan .spot-card__content h3 {
-  font-size: 38px;
-}
-
-.spot-grid--v5 .spot-card--hangmua .spot-card__content h3 {
-  font-size: 32px;
-}
-
 @media (max-width: 1100px) {
   .choice-grid {
     grid-template-columns: repeat(3, minmax(0,1fr));
-  }
-
-  .spot-grid.spot-grid--v5 {
-    grid-template-columns: repeat(2, minmax(0,1fr));
-    grid-template-rows: repeat(4, 300px);
-  }
-
-  .spot-grid--v5 .spot-card {
-    grid-column: auto;
-    grid-row: auto;
-  }
-
-  .spot-grid--v5 .spot-card--trangan,
-  .spot-grid--v5 .spot-card--hangmua {
-    grid-column: span 1;
   }
 }
 
@@ -1413,23 +1338,6 @@ main { position: relative; z-index: 3; }
     grid-template-columns: 1fr;
   }
 
-  .spot-grid.spot-grid--v5 {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(8, 300px);
-  }
-
-  .spot-grid--v5 .spot-card,
-  .spot-grid--v5 .spot-card--trangan,
-  .spot-grid--v5 .spot-card--hangmua {
-    grid-column: auto;
-    grid-row: auto;
-  }
-
-  .spot-grid--v5 .spot-card--trangan .spot-card__content h3,
-  .spot-grid--v5 .spot-card--hangmua .spot-card__content h3 {
-    font-size: 30px;
-  }
-
   .type-badge {
     white-space: normal;
     text-align: center;
@@ -1448,3 +1356,37 @@ main { position: relative; z-index: 3; }
     padding-right: 11px;
   }
 }
+
+/* Spotlight responsive — V6 */
+@media (max-width: 1100px) {
+  .spot-grid--v5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(4, 300px);
+  }
+
+  .spot-grid--v5 .spot-card,
+  .spot-grid--v5 .spot-card--trangan,
+  .spot-grid--v5 .spot-card--hangmua,
+  .spot-grid--v5 .spot-card--benan,
+  .spot-grid--v5 .spot-card--amtien,
+  .spot-grid--v5 .spot-card--baisoi,
+  .spot-grid--v5 .spot-card--kylan,
+  .spot-grid--v5 .spot-card--phoco,
+  .spot-grid--v5 .spot-card--thungui {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .spot-grid--v5 {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(8, 300px);
+  }
+
+  .spot-grid--v5 .spot-card--trangan .spot-card__content h3,
+  .spot-grid--v5 .spot-card--hangmua .spot-card__content h3 {
+    font-size: 30px;
+  }
+}
+
